@@ -3,29 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BirbalSuredia.com | Launching Soon</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        h1 {
-            font-size: 36px;
-            color: #007bff;
-        }
-
-        p {
-            font-size: 18px;
-            color: #333;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Automated Measurement System</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to BirbalSuredia.com</h1>
-    <p>Thank you for visiting! We're excited to announce that our website is launching soon.</p>
-    <p>Please stay tuned for updates and exciting content.</p>
+    <header>
+        <div class="container">
+            <h1>Automated Measurement System</h1>
+        </div>
+    </header>
+    <main>
+        <section id="introduction">
+            <div class="container">
+                <h2>Welcome to the Automated Measurement System</h2>
+                <p>In this project, we've developed an automated system capable of measuring various parameters and providing real-time updates.</p>
+            </div>
+        </section>
+        
+        <section id="components">
+            <div class="container">
+                <h2>Components</h2>
+                <ul>
+                    <li>Raspberry Pi</li>
+                    <li>Ultrasonic Sensor</li>
+                    <li>LM35 Temperature Sensor</li>
+                    <li>GSM Module</li>
+                    <li>LCD Display</li>
+                    <li>Load Cell Sensor</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="how-it-works">
+            <div class="container">
+                <h2>How It Works</h2>
+                <ol>
+                    <li>Height Measurement: The ultrasonic sensor emits sound waves and measures their reflection to calculate height.</li>
+                    <li>Temperature Sensing: The LM35 sensor captures ambient temperature data.</li>
+                    <li>SMS Notification: The GSM module sends real-time updates via SMS.</li>
+                    <li>Data Logging: Measurements are logged into Google Sheets for analysis.</li>
+                    <li>Weight Measurement: The load cell sensor measures weight using ADC.</li>
+                </ol>
+            </div>
+        </section>
+        
+        <section id="implementation">
+            <div class="container">
+                <h2>Implementation</h2>
+                <p>Let's dive into the code implementation for each component:</p>
+                <ol>
+                    <li><a href="#raspberry-pi-code">Raspberry Pi Code</a></li>
+                    <li><a href="#temperature-sensor-code">Temperature Sensor Code</a></li>
+                    <li><a href="#sms-notification-code">SMS Notification Code</a></li>
+                    <li><a href="#height-measurement-code">Height Measurement Code</a></li>
+                    <li><a href="#weight-measurement-code">Weight Measurement Code</a></li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- Add more sections as needed -->
+
+        <section id="raspberry-pi-code">
+            <div class="container">
+                <h2>Raspberry Pi Code</h2>
+                <p>Here's the Python code running on the Raspberry Pi:</p>
+                <pre><code class="python">
+# Raspberry Pi code goes here
+                </code></pre>
+            </div>
+        </section>
+
+        <section id="temperature-sensor-code">
+            <div class="container">
+                <h2>Temperature Sensor Code</h2>
+                <p>Code for reading temperature from the LM35 sensor:</p>
+                <pre><code class="python">
+# Temperature sensor code goes here
+                </code></pre>
+            </div>
+        </section>
+
+        <section id="sms-notification-code">
+            <div class="container">
+                <h2>SMS Notification Code</h2>
+                <p>Python code for sending SMS notifications:</p>
+                <pre><code class="python">
+# SMS notification code goes here
+                </code></pre>
+            </div>
+        </section>
+
+        <section id="height-measurement-code">
+            <div class="container">
+                <h2>Height Measurement Code</h2>
+                <p>Code for measuring height using the ultrasonic sensor:</p>
+                <pre><code class="python">
+# Height measurement code goes here
+                </code></pre>
+            </div>
+        </section>
+
+        <section id="weight-measurement-code">
+            <div class="container">
+                <h2>Weight Measurement Code</h2>
+                <p>Python code for measuring weight using the load cell sensor:</p>
+                <pre><code class="python">
+# Weight measurement code goes here
+                </code></pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Automated Measurement System. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
