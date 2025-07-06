@@ -409,10 +409,17 @@
             <span class="close" onclick="closeModal('presentation')">&times;</span>
             <h2>Project Presentation</h2>
             <div style="margin: 20px 0;">
-                <iframe id="presentationFrame" src="" style="width: 100%; height: 500px; border: none; border-radius: 10px; background: #f0f0f0;" frameborder="0"></iframe>
-                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">The presentation file is not available in this demo. In a real implementation, this would display the raj.ppt file.</p>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white; text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">📊</div>
+                    <h3 style="margin-bottom: 15px;">PowerPoint Presentation</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">View the complete STUGO project presentation with detailed insights, features, and implementation strategy.</p>
+                    <button onclick="openFile('raj.pptx')" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; margin: 5px;">View Presentation</button>
+                    <button onclick="downloadFile('raj.pptx')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; margin: 5px;">Download PPTX</button>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <p style="color: #666; font-size: 0.9rem; margin: 0;"><strong>Note:</strong> The presentation will open in a new tab. If you have PowerPoint installed, you can also download the file to view it locally.</p>
+                </div>
             </div>
-            <button onclick="openFile('raj.ppt')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">View in New Tab</button>
         </div>
     </div>
 
@@ -421,10 +428,17 @@
             <span class="close" onclick="closeModal('report')">&times;</span>
             <h2>Project Report</h2>
             <div style="margin: 20px 0;">
-                <iframe id="reportFrame" src="" style="width: 100%; height: 500px; border: none; border-radius: 10px; background: #f0f0f0;" frameborder="0"></iframe>
-                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">The report file is not available in this demo. In a real implementation, this would display the raj.pdf file.</p>
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white; text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">📋</div>
+                    <h3 style="margin-bottom: 15px;">Project Report (PDF)</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">Read the comprehensive project report documenting the entire development process and outcomes.</p>
+                    <button onclick="openFile('raj.pdf')" style="background: rgba(255,255,255,0.2); color: white; border: 2px solid white; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; margin: 5px;">View PDF</button>
+                    <button onclick="downloadFile('raj.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; font-weight: 600; margin: 5px;">Download PDF</button>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                    <p style="color: #666; font-size: 0.9rem; margin: 0;"><strong>Note:</strong> The PDF will open in a new tab for easy reading. You can also download it for offline viewing.</p>
+                </div>
             </div>
-            <button onclick="openFile('raj.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">View in New Tab</button>
         </div>
     </div>
 
@@ -432,8 +446,17 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('download')">&times;</span>
             <h2>Download STUGO App</h2>
-            <p style="margin: 20px 0;">The app file is not available in this demo. In a real implementation, this would download the release.app file.</p>
-            <button onclick="downloadFile('release.app')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download App</button>
+            <div style="margin: 20px 0;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 15px; color: white; text-align: center;">
+                    <div style="font-size: 4rem; margin-bottom: 20px;">📱</div>
+                    <h3 style="margin-bottom: 15px;">STUGO Android App</h3>
+                    <p style="margin-bottom: 20px; opacity: 0.9;">Download the STUGO application and experience the future of college canteen ordering.</p>
+                    <button onclick="downloadFile('app-release.apk')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 15px 30px; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: 1.1rem;">Download APK</button>
+                </div>
+                <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 10px; border-left: 4px solid #ffc107;">
+                    <p style="color: #856404; font-size: 0.9rem; margin: 0;"><strong>Installation Instructions:</strong> After downloading, enable "Install from unknown sources" in your Android settings, then tap the APK file to install.</p>
+                </div>
+            </div>
         </div>
     </div>
 
