@@ -3,123 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automated Measurement System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>STUGO - College Canteen Orders Made Easy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .student-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInLeft 1s ease-out 0.3s both;
+        }
+
+        .student-info h3 {
+            color: #ffd93d;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .student-info p {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .project-description {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideInRight 1s ease-out 0.6s both;
+        }
+
+        .project-description h3 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .project-description p {
+            color: white;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(0);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.9s; }
+        .card:nth-child(2) { animation-delay: 1.2s; }
+        .card:nth-child(3) { animation-delay: 1.5s; }
+
+        .card:hover {
+            transform: translateY(-20px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+        }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .card-icon {
+            transform: rotate(360deg);
+        }
+
+        .card h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ffd93d);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            width: 80px;
+            height: 80px;
+            animation-delay: -0.5s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            width: 60px;
+            height: 60px;
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 100px;
+            height: 100px;
+            animation-delay: -3.5s;
+        }
+
+        .floating-element:nth-child(4) {
+            bottom: 20%;
+            right: 20%;
+            width: 70px;
+            height: 70px;
+            animation-delay: -1s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalSlideIn 0.5s ease-out;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .student-info, .project-description {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Automated Measurement System</h1>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <div class="container">
+        <div class="hero">
+            <h1>STUGO</h1>
+            <p>College Canteen Orders Made Easy</p>
         </div>
-    </header>
-    <main>
-        <section id="introduction">
-            <div class="container">
-                <h2>Welcome to the Automated Measurement System</h2>
-                <p>In this project, we've developed an automated system capable of measuring various parameters and providing real-time updates.</p>
-            </div>
-        </section>
-        
-        <section id="components">
-            <div class="container">
-                <h2>Components</h2>
-                <ul>
-                    <li>Raspberry Pi</li>
-                    <li>Ultrasonic Sensor</li>
-                    <li>LM35 Temperature Sensor</li>
-                    <li>GSM Module</li>
-                    <li>LCD Display</li>
-                    <li>Load Cell Sensor</li>
-                </ul>
-            </div>
-        </section>
-        
-        <section id="how-it-works">
-            <div class="container">
-                <h2>How It Works</h2>
-                <ol>
-                    <li>Height Measurement: The ultrasonic sensor emits sound waves and measures their reflection to calculate height.</li>
-                    <li>Temperature Sensing: The LM35 sensor captures ambient temperature data.</li>
-                    <li>SMS Notification: The GSM module sends real-time updates via SMS.</li>
-                    <li>Data Logging: Measurements are logged into Google Sheets for analysis.</li>
-                    <li>Weight Measurement: The load cell sensor measures weight using ADC.</li>
-                </ol>
-            </div>
-        </section>
-        
-        <section id="implementation">
-            <div class="container">
-                <h2>Implementation</h2>
-                <p>Let's dive into the code implementation for each component:</p>
-                <ol>
-                    <li><a href="#raspberry-pi-code">Raspberry Pi Code</a></li>
-                    <li><a href="#temperature-sensor-code">Temperature Sensor Code</a></li>
-                    <li><a href="#sms-notification-code">SMS Notification Code</a></li>
-                    <li><a href="#height-measurement-code">Height Measurement Code</a></li>
-                    <li><a href="#weight-measurement-code">Weight Measurement Code</a></li>
-                </ol>
-            </div>
-        </section>
 
-        <!-- Add more sections as needed -->
-
-        <section id="raspberry-pi-code">
-            <div class="container">
-                <h2>Raspberry Pi Code</h2>
-                <p>Here's the Python code running on the Raspberry Pi:</p>
-                <pre><code class="python">
-# Raspberry Pi code goes here
-                </code></pre>
-            </div>
-        </section>
-
-        <section id="temperature-sensor-code">
-            <div class="container">
-                <h2>Temperature Sensor Code</h2>
-                <p>Code for reading temperature from the LM35 sensor:</p>
-                <pre><code class="python">
-# Temperature sensor code goes here
-                </code></pre>
-            </div>
-        </section>
-
-        <section id="sms-notification-code">
-            <div class="container">
-                <h2>SMS Notification Code</h2>
-                <p>Python code for sending SMS notifications:</p>
-                <pre><code class="python">
-# SMS notification code goes here
-                </code></pre>
-            </div>
-        </section>
-
-        <section id="height-measurement-code">
-            <div class="container">
-                <h2>Height Measurement Code</h2>
-                <p>Code for measuring height using the ultrasonic sensor:</p>
-                <pre><code class="python">
-# Height measurement code goes here
-                </code></pre>
-            </div>
-        </section>
-
-        <section id="weight-measurement-code">
-            <div class="container">
-                <h2>Weight Measurement Code</h2>
-                <p>Python code for measuring weight using the load cell sensor:</p>
-                <pre><code class="python">
-# Weight measurement code goes here
-                </code></pre>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Automated Measurement System. All rights reserved.</p>
+        <div class="student-info">
+            <h3>Student Information</h3>
+            <p><strong>Name:</strong> Raj Kumar</p>
+            <p><strong>College:</strong> ACEM (Affiliated to JC Bose University)</p>
+            <p><strong>Roll Number:</strong> 21CSE71</p>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="project-description">
+            <h3>Project Overview</h3>
+            <p>In the modern college environment, food ordering systems within campuses are often fragmented, inconvenient, and outdated. Students are required to visit the canteen physically, stand in long queues, and face inconsistencies in service, while vendors struggle with unorganized order management and limited reach. To solve this, STUGO – College Canteen Orders Made Easy – is a smart platform that connects students and multiple canteen vendors across various colleges based on location. It streamlines food ordering through a digital medium while providing additional features like event updates, wallet-based payments, and a "pay later" option verified via student documentation. The app bridges gaps in accessibility, communication, and management, aiming to transform the college food service experience into a smart, seamless, and scalable ecosystem.</p>
+        </div>
+
+        <div class="cards-container">
+            <div class="card" onclick="openModal('presentation')">
+                <div class="card-icon">📊</div>
+                <h3>Project Presentation</h3>
+                <p>View the complete project presentation with detailed insights, features, and implementation strategy.</p>
+                <button class="card-btn">View Presentation</button>
+            </div>
+
+            <div class="card" onclick="openModal('report')">
+                <div class="card-icon">📋</div>
+                <h3>Project Report</h3>
+                <p>Access the comprehensive project report documenting the entire development process and outcomes.</p>
+                <button class="card-btn">View Report</button>
+            </div>
+
+            <div class="card" onclick="openModal('download')">
+                <div class="card-icon">📱</div>
+                <h3>Download App</h3>
+                <p>Download the STUGO application and experience the future of college canteen ordering.</p>
+                <button class="card-btn">Download App</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div id="presentationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('presentation')">&times;</span>
+            <h2>Project Presentation</h2>
+            <p style="margin: 20px 0;">The presentation file is not available in this demo. In a real implementation, this would open or download the presentation.pdf file.</p>
+            <button onclick="downloadFile('presentation.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download Presentation</button>
+        </div>
+    </div>
+
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('report')">&times;</span>
+            <h2>Project Report</h2>
+            <p style="margin: 20px 0;">The report file is not available in this demo. In a real implementation, this would open or download the report.pdf file.</p>
+            <button onclick="downloadFile('report.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download Report</button>
+        </div>
+    </div>
+
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('download')">&times;</span>
+            <h2>Download STUGO App</h2>
+            <p style="margin: 20px 0;">The app file is not available in this demo. In a real implementation, this would download the release.app file.</p>
+            <button onclick="downloadFile('release.app')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download App</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function downloadFile(filename) {
+            // In a real implementation, this would trigger the actual file download
+            alert(`Download triggered for: ${filename}\n\nIn a real implementation, this would download the actual file.`);
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        }
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-20px) scale(1.05)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
