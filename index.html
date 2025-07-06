@@ -278,11 +278,13 @@
 
         .modal-content {
             background: white;
-            margin: 5% auto;
+            margin: 2% auto;
             padding: 20px;
             border-radius: 20px;
-            width: 90%;
-            max-width: 600px;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
             animation: modalSlideIn 0.5s ease-out;
         }
@@ -388,8 +390,8 @@
             <div class="card" onclick="openModal('report')">
                 <div class="card-icon">📋</div>
                 <h3>Project Report</h3>
-                <p>Access the comprehensive project report documenting the entire development process and outcomes.</p>
-                <button class="card-btn">View Report</button>
+                <p>Read the comprehensive project report documenting the entire development process and outcomes.</p>
+                <button class="card-btn">Read Report</button>
             </div>
 
             <div class="card" onclick="openModal('download')">
@@ -406,8 +408,11 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('presentation')">&times;</span>
             <h2>Project Presentation</h2>
-            <p style="margin: 20px 0;">The presentation file is not available in this demo. In a real implementation, this would open or download the presentation.pdf file.</p>
-            <button onclick="downloadFile('presentation.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download Presentation</button>
+            <div style="margin: 20px 0;">
+                <iframe id="presentationFrame" src="" style="width: 100%; height: 500px; border: none; border-radius: 10px; background: #f0f0f0;" frameborder="0"></iframe>
+                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">The presentation file is not available in this demo. In a real implementation, this would display the raj.ppt file.</p>
+            </div>
+            <button onclick="openFile('raj.ppt')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">View in New Tab</button>
         </div>
     </div>
 
@@ -415,8 +420,11 @@
         <div class="modal-content">
             <span class="close" onclick="closeModal('report')">&times;</span>
             <h2>Project Report</h2>
-            <p style="margin: 20px 0;">The report file is not available in this demo. In a real implementation, this would open or download the report.pdf file.</p>
-            <button onclick="downloadFile('report.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Download Report</button>
+            <div style="margin: 20px 0;">
+                <iframe id="reportFrame" src="" style="width: 100%; height: 500px; border: none; border-radius: 10px; background: #f0f0f0;" frameborder="0"></iframe>
+                <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">The report file is not available in this demo. In a real implementation, this would display the raj.pdf file.</p>
+            </div>
+            <button onclick="openFile('raj.pdf')" style="background: linear-gradient(45deg, #ff6b6b, #ffd93d); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-right: 10px;">View in New Tab</button>
         </div>
     </div>
 
@@ -440,6 +448,12 @@
             const modal = document.getElementById(type + 'Modal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
+        }
+
+        function openFile(filename) {
+            // In a real implementation, this would open the PDF file for viewing
+            alert(`Opening ${filename} for viewing...\n\nIn a real implementation, this would open the PDF file in a new tab or embed it in the iframe above.`);
+            // Example: window.open(filename, '_blank');
         }
 
         function downloadFile(filename) {
