@@ -474,14 +474,34 @@
         }
 
         function openFile(filename) {
-            // In a real implementation, this would open the PDF file for viewing
-            alert(`Opening ${filename} for viewing...\n\nIn a real implementation, this would open the PDF file in a new tab or embed it in the iframe above.`);
-            // Example: window.open(filename, '_blank');
+            // Your actual GitHub repository URLs
+            const githubBaseUrl = 'https://github.com/coderx-raj/techzone.com/raw/main/';
+            
+            if (filename.endsWith('.pdf')) {
+                // For PDFs, use GitHub's built-in PDF viewer
+                const githubViewUrl = `https://github.com/coderx-raj/techzone.com/blob/main/${filename}`;
+                window.open(githubViewUrl, '_blank');
+            } else if (filename.endsWith('.pptx')) {
+                // For PowerPoint files, use Office Online viewer
+                const officeViewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(githubBaseUrl + filename)}`;
+                window.open(officeViewerUrl, '_blank');
+            } else {
+                // For other files, open raw GitHub link
+                window.open(githubBaseUrl + filename, '_blank');
+            }
         }
 
         function downloadFile(filename) {
-            // In a real implementation, this would trigger the actual file download
-            alert(`Download triggered for: ${filename}\n\nIn a real implementation, this would download the actual file.`);
+            // Your actual GitHub raw download URLs
+            const githubRawUrl = `https://github.com/coderx-raj/techzone.com/raw/main/${filename}`;
+            
+            // Create a temporary link element and trigger download
+            const link = document.createElement('a');
+            link.href = githubRawUrl;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // Close modal when clicking outside of it
